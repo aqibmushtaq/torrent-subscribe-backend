@@ -1,3 +1,5 @@
+var _ = require("lodash");
+
 module.exports.controller = function (app) {
 
     this.app = app;
@@ -24,7 +26,7 @@ module.exports.controller = function (app) {
 
         app.get("node-deluge").get_status(function(result) {
             app.get("logger").trace("[/torrent GET] success: " + JSON.stringify(result));
-            if (!result.result.torrents) {
+            if (!_.has(result, "result.torrents")) {
                 res.status(400).send(JSON.stringify(result));
                 return;
             }

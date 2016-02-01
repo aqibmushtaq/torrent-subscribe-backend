@@ -1,16 +1,17 @@
 {
-    "name": "torrent-subscribe-backend",
-    "version": "0.0.1",
-    "private": true,
-    "scripts": {
-        "start": "node app.js"
-    },
-    "dependencies": {
-        "express": "3.4.4",
-        "log4js": "0.6.x",
-        "async": "~0.2.10",
-        "request": "2.51.x",
-        "deluge": "1.7.0",
-        "node-deluge": "1.0.1"
-    }
+  "name": "torrent-subscribe-backend",
+  "version": "0.0.2",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async": "~0.2.10",
+    "deluge": "1.7.0",
+    "express": "3.4.4",
+    "lodash": "^4.1.0",
+    "log4js": "0.6.x",
+    "node-deluge": "1.0.1",
+    "request": "2.51.x"
+  }
 }
