@@ -24,6 +24,10 @@ module.exports.controller = function (app) {
 
         app.get("node-deluge").get_status(function(result) {
             app.get("logger").trace("[/torrent GET] success: " + JSON.stringify(result));
+            if (!result.result.torrents) {
+                res.status(400).send(JSON.stringify(result));
+                return;
+            }
             res.send(JSON.stringify(result.result.torrents));
         });
     });

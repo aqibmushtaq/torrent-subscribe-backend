@@ -32,7 +32,7 @@ var nodeDeluge = require('node-deluge')(config.deluge.hostname, config.deluge.pa
 app.set('node-deluge', nodeDeluge);
 
 // all environments
-app.set('port', config.port || 3000);
+app.set('port', config.port || 3001);
 app.set('async', async);
 app.set('request', request);
 app.use(function(req, res, next) {
