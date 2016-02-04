@@ -11,6 +11,7 @@ var request = require('request');
 var async = require('async');
 var log4js = require('log4js');
 var config = require('./config')();
+var nodeDeluge = require('node-deluge');
 var app = express();
 
 // Setup the logger
@@ -28,8 +29,12 @@ var deluge = require('deluge')(config.deluge.jsonUrl, config.deluge.password);
 app.set('deluge', deluge);
 
 // Setup node-deluge
-var nodeDeluge = require('node-deluge')(config.deluge.hostname, config.deluge.password, config.deluge.port);
-app.set('node-deluge', nodeDeluge);
+var nodeDelugeSignIn = () => {
+    logger.info("logging into node-deluge");
+    app.set('node-deluge', nodeDeluge(config.deluge.hostname, config.deluge.password, config.deluge.port));
+};
+nodeDelugeSignIn();
+setInterval(nodeDelugeSignIn, 3600000);
 
 // all environments
 app.set('port', config.port || 3001);
