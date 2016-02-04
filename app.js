@@ -24,6 +24,8 @@ log4js.configure({
 var logger = log4js.getLogger(config.logLevel);
 app.set('logger', logger);
 
+app.set('deluge-directories', config.deluge.directories);
+
 // Setup deluge
 var deluge = require('deluge')(config.deluge.jsonUrl, config.deluge.password);
 app.set('deluge', deluge);
